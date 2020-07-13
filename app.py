@@ -6,6 +6,10 @@ from utils import fetch_reply
 
 app = Flask(__name__)
 
+@app.route('/')
+def hello():
+	return "Hello world!"
+
 @app.route('/sms', methods=['POST'])
 def sms_reply():
 	incmbody = request.values.get('Body','').lower()
