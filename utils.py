@@ -1,7 +1,7 @@
 import os 
 import dialogflow_v2 as dialogflow
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "jokes-osfmxi-e035f1f74f65.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "jokes-osfmxi-f824eb9136d7.json"
 
 dialogflow_session_client = dialogflow.SessionsClient()
 PROJECT_ID = "jokes-osfmxi"
