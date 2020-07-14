@@ -9,17 +9,28 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_sms():
-	link = requests.get("https://web.whatsapp.com/")
-	return link.body
+	return "Hi, this is whatsapp bot."
 @app.route('/bot', methods=['POST'])
 def sms_reply():
 	incmbody = request.values.get('Body','').lower()
 	msge = request.form.get('Body')
 	phone_no = request.form.get('From')
 	response = MessagingResponse()
-	reply = fetch_reply(msge, phone_no)
-	response.message(reply)
-
+	reply1 = fetch_reply(msge, phone_no)
+	responded = False
+	if  incmbody in ('hi', 'hey', 'hello'):
+		text = "Hi I'm whatsapp chatbot"
+		response.message(text)
+		responded = True
+	elif incmbody in ('bye', 'goodbye'):
+		response.message("Goodbye!")
+		responded = True
+	else:
+		response.message(reply1)
+		responded = True
+	
+	if not responded:
+		response.message("Sorry, I'have a problem")
 	return str(response)
 
 if __name__ == '__main__':
